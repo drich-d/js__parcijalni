@@ -4,6 +4,7 @@ const tableBodyEl = document.querySelector("tbody");
 tableBodyEl.classList.add = ".table__body";
 
 const InputFieldEl = document.querySelector(".input__field");
+
 InputFieldEl.addEventListener("keyup", (event) => {
   const searchTerm = event.target.value;
 
@@ -12,9 +13,8 @@ InputFieldEl.addEventListener("keyup", (event) => {
   );
   renderAttendees(
     filteredResults,
-    "There are no lessons according to the entered term"
+    "There are no attendees according to the entered term"
   );
-  console.log(filteredResults);
 });
 
 function renderAttendees(attendees) {
@@ -54,6 +54,31 @@ function renderAttendees(attendees) {
   }
 }
 renderAttendees(attendees);
+
+function sortAttendees(attendees) {
+  const sort = document.querySelector(".select");
+  sort.addEventListener("change", (event) => {
+    const sortValue = event.target.value;
+    if (sortValue === "ascending") attendees.sort((a, b) => a.age - b.age);
+    else if (sortValue === "descending") {
+      attendees.sort((a, b) => b.age - a.age);
+    } else {
+      attendees.sort((a, b) => a.id - b.id);
+    }
+    renderAttendees(attendees);
+  });
+}
+
+sortAttendees(attendees);
+
+// if (sortValue === "ascending") attendees.sort((a, b) => a.age - b.age);
+// else {
+//   attendees.sort((a, b) => b.age - a.age);
+
+// }
+// });
+// }
+// Ovo gore radi ascending i descending, ali ne default
 
 // ILI UMJESTO FORA
 // attendees.forEach(attendee => {

@@ -10,7 +10,14 @@
   <body>
     <section>
       <h1>Polaznici</h1>
-      <input type="text" class="input__field" /><br />
+      <div class="table__modifier">
+        <input type="text" class="input__field" />
+        <select class="select">
+          <option value="default">Default order</option>
+          <option value="ascending">Sort ascending</option>
+          <option value="descending">Sort descending</option>
+        </select>
+      </div>
       <table class="table">
         <thead class="table__header">
           <th>ID</th>
